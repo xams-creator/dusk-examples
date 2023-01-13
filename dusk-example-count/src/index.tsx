@@ -1,25 +1,15 @@
-import * as React from 'react';
-
-import Dusk from '@xams-framework/dusk';
+import Dusk, { createApp } from '@xams-framework/dusk';
 
 import model from './index.model';
 import App from './app';
 
-
-const app = new Dusk({
+Dusk.configuration.experimental.context = false;
+const app = createApp({
     container: '#root',
-    history: {
-        mode: 'hash'
-    },
-    models: [
-        model
-    ],
-    render(props) {
-        return <App/>;
-    }
 });
 
-
-window.app = app;
-app.startup();
+app
+    .define(model)
+    .startup(<App />)
+;
 

@@ -1,36 +1,40 @@
-import * as React from 'react';
+import { useDispatch, useNamespacedSelector } from '@xams-framework/dusk';
+import model from 'src/index.model';
 
-import {connect} from '@xams-framework/dusk';
 
+export default function App() {
+    const state: any = useNamespacedSelector(model.namespace);
+    const dispatch = useDispatch();
+    return (
+        <>
+            <button
+                onClick={() => {
+                    dispatch(model.actions.add());
+                }}
+            >
+                +1
+            </button>
 
-class App extends React.Component<any> {
+            <span style={{ padding: 12 }}>{state.value}</span>
 
-    render() {
-        return (
-            <div>
-                Hello world dusk！
+            <button
+                onClick={() => {
+                    dispatch(model.actions.minus());
+                }}
+            >
+                -1
+            </button>
 
-                <br/>
-                <button onClick={() => {
-                    this.props.dispatch({type: 'app/add'});
-                }}>+</button>
-                <button onClick={() => {
-                    this.props.dispatch({type: 'app/minus'});
-                }}>-
-                </button>
-                {this.props.count || 0}
-            </div>
-        );
-    }
+            <hr />
 
+            <button
+                disabled={state.loading}
+                onClick={() => {
+                    dispatch(model.commands.add());
+                }}
+            >
+                async add
+            </button>
+        </>
+    );
 }
-
-export default connect(
-    (state: any) => {
-        return state.app;
-    }, (dispatch) => {
-        return {
-            dispatch,
-        };
-    }
-)(App);

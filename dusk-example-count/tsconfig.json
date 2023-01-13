@@ -1,37 +1,37 @@
 {
     "compilerOptions": {
-        "sourceMap": true,
-        "module": "esnext",
-        "outDir": "lib",
-        "jsx": "react",
+        "target": "es5",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
         "allowJs": true,
         "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "isolatedModules": true,
-        "allowUnreachableCode": true,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "declaration": true,
-        "skipDefaultLibCheck": true,
+        "isolatedModules": false,
         "experimentalDecorators": true,
-        "target": "es6",
-        "pretty": true,
-        "typeRoots": [],
+        "noEmit": true,
+        "jsx": "react-jsx",
         "baseUrl": ".",
-        "paths":{
-            "@/*": ["src/*"]
-        }
+        "paths": {
+            "src/*": [
+                "src/*"
+            ]
+        },
+        "noImplicitAny": false
     },
-    "files": [
-        "node_modules/xams-cli/lib/xams-app.d.ts"
-    ],
     "include": [
         "src/**/*"
     ],
-    "exclude1": [
-        "node_modules",
-        "**/*.spec.ts"
+    "exclude": [
+        "node_modules"
     ]
 }
-
