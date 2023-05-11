@@ -12,6 +12,5 @@ app
     .startup(<App />)
 ;
 
-// @ts-ignore
 window.app = app;
 

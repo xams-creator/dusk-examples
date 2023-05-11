@@ -1,26 +1,22 @@
-import * as React from 'react';
-import Dusk from '@xams-framework/dusk';
-import createValidator from '@/configuration/app-validator';
-import createPrinter from '@/configuration/printer';
-import App from '@/app';
-import createCustomHooks from '@/configuration/custom-hooks';
+import React from 'react';
+import { createApp } from '@xams-framework/dusk';
+import createDuskAppLifecycle from '@/configuration/plugins/dusk-plugin-app-lifecycle';
+import createDuskAppReady from '@/configuration/plugins/dusk-plugin-app-ready';
+import createDuskCustomHooks from '@/configuration/plugins/dusk-plugin-custom-hooks';
 
-Dusk.configuration.plugin.hooks.push('onTest');
 
-const app = new Dusk({
+const app = createApp({
     container: '#root',
-    history: {
-        mode: 'hash',
-    },
-    render(props) {
-        return <App />;
-    },
 });
 
-app.use(createPrinter());
-app.use(createValidator());
-app.use(createCustomHooks());
+
+app
+    .use(createDuskAppLifecycle())
+    .use(createDuskAppReady())
+    .use(createDuskCustomHooks())
+    .startup(<div>按F12请打开控制台</div>)
+;
 
 window.app = app;
-app.startup();
+
 
