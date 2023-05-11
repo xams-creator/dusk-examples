@@ -30,7 +30,10 @@ export default function App() {
             <button
                 disabled={state.loading}
                 onClick={() => {
-                    dispatch(model.commands.add());
+                    dispatch(model.commands.add())
+                        .then((res: { code: number, data: string }) => {
+                            alert(res.data);
+                        });
                 }}
             >
                 async add

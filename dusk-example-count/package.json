@@ -5,32 +5,35 @@
     "dependencies": {
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "@xams-framework/dusk": "^1.0.8"
+        "@xams-framework/dusk": "1.1.2"
     },
     "devDependencies": {
-        "react-scripts": "5.0.1",
+        "@craco/craco": "^7.1.0",
+        "@craco/types": "^7.1.0",
+        "react-scripts": "^5.0.1",
         "@types/node": "^16.11.66",
         "@types/react": "^18.0.21",
         "@types/react-dom": "^18.0.6",
-        "@types/redux-logger": "^3.0.9",
-        "typescript": "^4.8.4"
+        "typescript": "^4.9.4"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
-    },
-    "xams": {
-        "env": {
-            "common": {
-                "REACT_APP_PATH_SRC_ALIAS_NAME": "@"
-            }
-        }
+        "start": "craco start",
+        "build": "craco build",
+        "test": "craco test"
     },
     "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ],
         "rules": {
-            "import/no-anonymous-default-export": "off"
+            "jsx-a11y/anchor-is-valid": "off",
+            "no-undef": "off",
+            "no-restricted-globals": "off",
+            "no-unused-vars": "off",
+            "no-new-func": "off",
+            "import/no-anonymous-default-export": "off",
+            "@typescript-eslint/no-unused-vars": "off"
         }
     },
     "browserslist": {

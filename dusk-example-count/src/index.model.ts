@@ -7,10 +7,10 @@ const model = createDuskModel({
         loading: false,
     },
     reducers: {
-        add(state: any) {
+        add(state) {
             state.value += 1;
         },
-        minus(state: any) {
+        minus(state) {
             state.value -= 1;
         },
         loading(state, { payload }) {
@@ -23,6 +23,11 @@ const model = createDuskModel({
             await sleep(1000);
             put();
             dispatch(model.actions.loading(false));
+
+            return {
+                code: 1,
+                data: 'hello',
+            };
         },
     },
 });
