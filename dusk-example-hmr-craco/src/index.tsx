@@ -1,8 +1,8 @@
 import {createApp} from '@xams-framework/dusk';
 import createDuskAppInitializer from './configuration/plugins/dusk-plugin-app-initializer';
 import createDuskHmr from '@xams-framework/dusk-plugin-hmr';
-import createDuskContext from '@xams-framework/dusk-plugin-context';
 import router from './configuration/router';
+import createDuskContextWebpack from '@xams-framework/dusk-plugin-context-webpack';
 
 const app = createApp({
     container: '#root',
@@ -19,7 +19,7 @@ const app = createApp({
 
 app
     .use(createDuskAppInitializer())
-    .use(createDuskContext())
+    .use(createDuskContextWebpack())
     .use(createDuskHmr())
     .router(router)
     .startup()
